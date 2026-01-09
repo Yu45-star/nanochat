@@ -36,8 +36,8 @@ source .venv/bin/activate
 #    `WANDB_RUN=d26 bash speedrun.sh`
 if [ -z "$WANDB_RUN" ]; then
     # by default use "dummy" : it's handled as a special case, skips logging to wandb
-    # WANDB_RUN=dummy
-    WANDB_RUN=d20
+    WANDB_RUN=dummy
+    # WANDB_RUN=d20
 fi
 
 # -----------------------------------------------------------------------------
