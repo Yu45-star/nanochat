@@ -30,14 +30,23 @@ source .venv/bin/activate
 # -----------------------------------------------------------------------------
 # wandb setup
 # If you wish to use wandb for logging (it's nice!, recommended).
-# 1) Make sure to first log in to wandb, e.g. run:
+# 1) Set WANDB_API_KEY environment variable before running this script, e.g.:
+#    `export WANDB_API_KEY="your_key_here"`
+# 2) Or manually log in to wandb by running:
 #    `wandb login`
-# 2) Set the WANDB_RUN environment variable when running this script, e.g.:
+# 3) Set the WANDB_RUN environment variable when running this script, e.g.:
 #    `WANDB_RUN=d26 bash speedrun.sh`
+
+# Auto-login to wandb if WANDB_API_KEY is set
+if [ ! -z "$WANDB_API_KEY" ]; then
+    echo "WANDB_API_KEY detected, logging in to wandb..."
+    wandb login "$WANDB_API_KEY"
+fi
+
 if [ -z "$WANDB_RUN" ]; then
     # by default use "dummy" : it's handled as a special case, skips logging to wandb
     # WANDB_RUN=dummy
-    WANDB_RUN=d20 bash speedrun.sh
+    WANDB_RUN=d20
 fi
 
 # -----------------------------------------------------------------------------
